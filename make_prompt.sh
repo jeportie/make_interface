@@ -25,7 +25,7 @@ while true; do
     fi
 
     if [ -n "$target" ]; then
-        make $target
+        make -s $target
     else
         echo "Please enter a valid make target or type 'exit' to quit."
     fi
