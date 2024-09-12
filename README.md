@@ -1,2 +1,2 @@
 # make_interface
-makefile exec too;s
+makefile exec tools
