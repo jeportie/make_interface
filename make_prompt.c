@@ -6,7 +6,7 @@
 /*   By: jeportie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 10:44:53 by jeportie          #+#    #+#             */
-/*   Updated: 2024/09/13 11:01:21 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/09/13 11:04:43 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	run_make_command(char *target, char *args)
 	}
 	if (pid == 0)
 	{
-		make_args[0] = "make";
+		make_args[0] = "make -s";
 		make_args[1] = target;
 		if (args)
 		{
