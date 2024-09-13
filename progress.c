@@ -6,7 +6,7 @@
 /*   By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 19:31:14 by jeportie          #+#    #+#             */
-/*   Updated: 2024/09/13 10:08:59 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/09/13 10:13:27 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include <unistd.h>
 
 #define BAR_WIDTH 20
-#define MAX_SLEEP_USEC 1000000  // 1 second in microseconds
+#define MAX_SLEEP_USEC 500000  // 1 second in microseconds
 #define MIN_SLEEP_USEC 10000    // 10 ms in microseconds
 
 void	print_progress(int step, int total)
@@ -29,7 +29,7 @@ void	print_progress(int step, int total)
 		step = total;
 	percent = (step * 100) / total;
 	bar_length = (step * BAR_WIDTH) / total;
-	printf("\r\033[32m[%-*.*s] %d%%\n\033[0m", BAR_WIDTH, bar_length,
+	printf("\r\033[32m[%-*.*s] %d%%\033[0m", BAR_WIDTH, bar_length,
 		"####################", percent);
 	fflush(stdout);
 }
