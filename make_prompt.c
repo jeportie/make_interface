@@ -6,7 +6,7 @@
 /*   By: jeportie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 10:44:53 by jeportie          #+#    #+#             */
-/*   Updated: 2024/09/13 12:28:44 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/09/13 12:41:14 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,7 +141,7 @@ void run_make_command(char *target, char *args)
     pid_t pid;
     char **split_args;
     char **make_args;
-    int i, j;
+    int i;
 
     pid = fork();
     if (pid == -1)
@@ -151,44 +151,31 @@ void run_make_command(char *target, char *args)
     }
     if (pid == 0)  // Child process
     {
-        // Split the args string by spaces into an array (if args is not NULL)
         if (args)
             split_args = ft_split(args, ' ');
         else
             split_args = NULL;
-
-        // Count the number of split arguments
         int split_count = 0;
         if (split_args)
         {
             while (split_args[split_count])
                 split_count++;
         }
-
-        // Allocate memory for make_args (3 fixed elements + the number of split args + NULL)
         make_args = malloc(sizeof(char *) * (3 + split_count + 1));
         if (!make_args)
         {
             write(2, "Memory allocation failed\n", 25);
             _exit(1);
         }
-
-        // Fill make_args
         make_args[0] = "make";
         make_args[1] = "-s";
         make_args[2] = target;  // Target to make
-
-        // Copy split_args into make_args
         for (i = 0; i < split_count; i++)
         {
             make_args[3 + i] = split_args[i];
         }
         make_args[3 + i] = NULL;  // NULL-terminate the array
-
-        // Execute make with the constructed arguments
         execvp(make_args[0], make_args);
-
-        // If execvp fails, print an error and exit
         write(2, "Exec failed\n", 12);
         _exit(1);
     }
