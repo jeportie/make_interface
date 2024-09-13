@@ -6,7 +6,7 @@
 /*   By: jeportie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 10:44:53 by jeportie          #+#    #+#             */
-/*   Updated: 2024/09/13 12:41:14 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/09/13 14:57:38 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 #include <readline/history.h>
 
 #define GREEN "\033[0;32m"
+#define RED "\033[0;31m"
 #define NC "\033[0m"  // No Color
 
 static void	ft_free_memory(char **tab, size_t i)
@@ -194,7 +195,7 @@ int	main(void)
 
 	while (1)
 	{
-		target = readline("Make> "); // Replaces fgets, supports history
+		target = readline(GREEN"Make> "NC); // Replaces fgets, supports history
 		if (!target)
 			break;
 
@@ -215,7 +216,7 @@ int	main(void)
 		}
 		else
 		{
-			printf("Please enter a valid target.\n");
+			printf(RED"Please enter a valid target.\n"NC);
 		}
 		free(target); // Free memory allocated by readline
 	}
