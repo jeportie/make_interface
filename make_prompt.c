@@ -6,7 +6,7 @@
 /*   By: jeportie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 10:44:53 by jeportie          #+#    #+#             */
-/*   Updated: 2024/09/13 11:04:43 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/09/13 11:07:35 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	remove_newline(char *str)
 void	run_make_command(char *target, char *args)
 {
 	pid_t	pid;
-	char	*make_args[5];
+	char	*make_args[6];
 
 	pid = fork();
 	if (pid == -1)
@@ -42,15 +42,16 @@ void	run_make_command(char *target, char *args)
 	}
 	if (pid == 0)
 	{
-		make_args[0] = "make -s";
-		make_args[1] = target;
+		make_args[0] = "make";
+		make_args[1] = "-s";
+		make_args[2] = target;
 		if (args)
 		{
-			make_args[2] = args;  // Pass arguments to make
-			make_args[3] = NULL;
+			make_args[3] = args;  // Pass arguments to make
+			make_args[4] = NULL;
 		}
 		else
-			make_args[2] = NULL;
+			make_args[3] = NULL;
 		execvp(make_args[0], make_args);
 		write(2, "Exec failed\n", 12);
 		_exit(1);
