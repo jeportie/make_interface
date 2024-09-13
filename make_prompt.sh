@@ -6,7 +6,7 @@
 #    By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/12 18:44:00 by jeportie          #+#    #+#              #
-#    Updated: 2024/09/13 10:14:36 by jeportie         ###   ########.fr        #
+#    Updated: 2024/09/13 10:15:37 by jeportie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,6 @@
 GREEN='\033[0;32m'
 NC='\033[0m' # No Color
 
-echo '\n'
 while true; do
     echo -n "${GREEN}Make>${NC} "
     read target
