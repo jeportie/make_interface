@@ -6,7 +6,7 @@
 /*   By: jeportie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 10:44:53 by jeportie          #+#    #+#             */
-/*   Updated: 2024/09/13 10:46:03 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/09/13 11:01:21 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,10 @@ void	remove_newline(char *str)
 		str[len - 1] = '\0';
 }
 
-void	run_make_command(char *target)
+void	run_make_command(char *target, char *args)
 {
 	pid_t	pid;
-	char	*args[4];
+	char	*make_args[5];
 
 	pid = fork();
 	if (pid == -1)
@@ -42,11 +42,16 @@ void	run_make_command(char *target)
 	}
 	if (pid == 0)
 	{
-		args[0] = "make";
-		args[1] = "-s";
-		args[2] = target;
-		args[3] = NULL;
-		execvp(args[0], args);
+		make_args[0] = "make";
+		make_args[1] = target;
+		if (args)
+		{
+			make_args[2] = args;  // Pass arguments to make
+			make_args[3] = NULL;
+		}
+		else
+			make_args[2] = NULL;
+		execvp(make_args[0], make_args);
 		write(2, "Exec failed\n", 12);
 		_exit(1);
 	}
@@ -57,6 +62,7 @@ void	run_make_command(char *target)
 int	main(void)
 {
 	char	target[256];
+	char	*args;
 
 	while (1)
 	{
@@ -64,10 +70,16 @@ int	main(void)
 		if (!fgets(target, sizeof(target), stdin))
 			break ;
 		remove_newline(target);
+		args = strchr(target, ' ');  // Find the first space (arguments start here)
+		if (args != NULL)
+		{
+			*args = '\0';  // Split target and args
+			args++;  // Move to the first argument after the space
+		}
 		if (strcmp(target, "exit") == 0 || strcmp(target, "quit") == 0)
 			break ;
 		if (strlen(target) > 0)
-			run_make_command(target);
+			run_make_command(target, args);
 		else
 			write(1, "Please enter a valid target.\n", 29);
 	}
