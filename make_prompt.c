@@ -15,6 +15,8 @@
 #include <string.h>
 #include <unistd.h>
 #include <sys/wait.h>
+#include <readline/readline.h>
+#include <readline/history.h>
 
 #define GREEN "\033[0;32m"
 #define NC "\033[0m"  // No Color
@@ -184,30 +186,40 @@ void run_make_command(char *target, char *args)
         waitpid(pid, NULL, 0);  // Wait for the child process to finish
     }
 }
+
 int	main(void)
 {
-	char	target[256];
+	char	*target;
 	char	*args;
 
 	while (1)
 	{
-		write(1, GREEN "Make> " NC, sizeof(GREEN "Make> " NC) - 1);
-		if (!fgets(target, sizeof(target), stdin))
-			break ;
-		remove_newline(target);
-		args = strchr(target, ' ');  // Find the first space (arguments start here)
-		if (args != NULL)
-		{
-			*args = '\0';  // Split target and args
-			args++;  // Move to the first argument after the space
-		}
-		if (strcmp(target, "exit") == 0 || strcmp(target, "quit") == 0)
-			break ;
+		target = readline("Make> "); // Replaces fgets, supports history
+		if (!target)
+			break;
+
 		if (strlen(target) > 0)
+		{
+			add_history(target); // Add command to history
+
+			remove_newline(target);
+			args = strchr(target, ' ');  // Find the first space (arguments start here)
+			if (args != NULL)
+			{
+				*args = '\0';  // Split target and args
+				args++;  // Move to the first argument after the space
+			}
+			if (strcmp(target, "exit") == 0 || strcmp(target, "quit") == 0)
+				break ;
 			run_make_command(target, args);
+		}
 		else
-			write(1, "Please enter a valid target.\n", 29);
+		{
+			printf("Please enter a valid target.\n");
+		}
+		free(target); // Free memory allocated by readline
 	}
-	write(1, "Exiting Make prompt.\n", 21);
+
+	printf("Exiting Make prompt.\n");
 	return (0);
 }
