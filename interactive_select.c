@@ -6,7 +6,7 @@
 /*   By: jeportie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/14 18:20:00 by jeportie          #+#    #+#             */
-/*   Updated: 2024/09/14 18:59:42 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/09/14 19:00:29 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ int	main(void)
 	{
 		char command[256];
 
-		snprintf(command, sizeof(command), "vim .uml/%s -c 'sleep 2' -c 'q'", file_list[choice]);
+		snprintf(command, sizeof(command), "vim .uml/%s -c 'sleep 2' -c 'PlantumlSave' -c 'q'", file_list[choice]);
 		system(command);
 	}
 	for (int i = 0; i < file_count; i++)
