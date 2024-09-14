@@ -71,7 +71,7 @@ int	main(void)
 	{
 		char command[256];
 
-		snprintf(command, sizeof(command), "vim .uml/%s -c 'sleep 2' -c 'PlantumlSave' -c 'q'", file_list[choice]);
+		snprintf(command, sizeof(command), "vim .uml/%s -c 'sleep 1' -c 'q'", file_list[choice]);
 		system(command);
 	}
 	for (int i = 0; i < file_count; i++)
