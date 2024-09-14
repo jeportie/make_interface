@@ -6,7 +6,7 @@
 /*   By: jeportie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/14 18:20:00 by jeportie          #+#    #+#             */
-/*   Updated: 2024/09/14 18:45:07 by jeportie         ###   ########.fr       */
+/*   Updated: 2024/09/14 18:50:42 by jeportie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	get_uml_files(char *directory, char *file_list[], int *count);
 
 int	main(void)
 {
-	char	*file_list[MAX_FILES];
+	char	*file_list[MAX_FILES + 1]; // Include extra space for "Exit"
 	int		file_count;
 	int		highlight;
 	int		choice;
@@ -32,6 +32,11 @@ int	main(void)
 
 	file_count = 0;
 	get_uml_files(".uml", file_list, &file_count);
+
+	// Add the "Exit" option to the list
+	file_list[file_count] = strdup("Exit");
+	file_count++;
+
 	if (file_count == 0)
 	{
 		printf("No UML files found in the .uml directory\n");
@@ -62,6 +67,7 @@ int	main(void)
 			break ;
 	}
 	endwin();
+	if (strcmp(file_list[choice], "Exit") != 0) // Only open vim if not "Exit"
 	{
 		char command[256];
 
