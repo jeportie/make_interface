@@ -6,7 +6,7 @@
 #    By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/15 19:28:59 by jeportie          #+#    #+#              #
-#    Updated: 2024/09/15 19:41:17 by jeportie         ###   ########.fr        #
+#    Updated: 2024/09/15 19:43:23 by jeportie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,7 @@ for FILE in $SRC_FILES; do
   FILE_LIST="$FILE_LIST  $FILE \\\\\n"
 done
 
-# Remove the trailing '\' from the last file
+# Remove the trailing '\' from the last file and trim the leading newline
 FILE_LIST=$(printf "$FILE_LIST" | sed '$ s/\\\\//')
 
 # Ensure the .bak folder exists
