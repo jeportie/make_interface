@@ -6,7 +6,7 @@
 #    By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/15 19:28:59 by jeportie          #+#    #+#              #
-#    Updated: 2024/09/15 19:47:31 by jeportie         ###   ########.fr        #
+#    Updated: 2024/09/15 19:52:12 by jeportie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,8 +43,9 @@ mkdir -p $BAK_DIR
 # Temporary file to hold the new file list content
 TEMP_FILE=$(mktemp)
 
-# Write the new SRC content to the temp file using printf without leading \n
-printf "# List of source files:\nSRC = \\\n%s" "$FILE_LIST" > $TEMP_FILE
+# Write the new SRC content to the temp file without leading \n
+printf "# List of source files:\nSRC = \\" > $TEMP_FILE
+printf "\n%s" "$FILE_LIST" >> $TEMP_FILE
 
 # Check if the Makefile exists and contains the marker for auto-generated files
 if grep -q "$START_MARKER" Makefile; then
