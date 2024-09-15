@@ -6,7 +6,7 @@
 #    By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/15 19:28:59 by jeportie          #+#    #+#              #
-#    Updated: 2024/09/15 19:32:46 by jeportie         ###   ########.fr        #
+#    Updated: 2024/09/15 19:35:59 by jeportie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,7 +35,7 @@ for FILE in $SRC_FILES; do
 done
 
 # Remove the trailing '\' from the last file
-FILE_LIST=$(echo -e "$FILE_LIST" | sed '$ s/\\//')
+FILE_LIST=$(printf "$FILE_LIST" | sed '$ s/\\//')
 
 # Ensure the .bak folder exists
 mkdir -p $BAK_DIR
@@ -43,8 +43,8 @@ mkdir -p $BAK_DIR
 # Temporary file to hold the new file list content
 TEMP_FILE=$(mktemp)
 
-# Write the new SRC content to the temp file
-echo -e "# List of source files:\nSRC = $FILE_LIST" > $TEMP_FILE
+# Write the new SRC content to the temp file using printf for better formatting
+printf "# List of source files:\nSRC = \\\n%s" "$FILE_LIST" > $TEMP_FILE
 
 # Check if the Makefile exists and contains the marker for auto-generated files
 if grep -q "$START_MARKER" Makefile; then
@@ -52,7 +52,7 @@ if grep -q "$START_MARKER" Makefile; then
   sed -i.bak "/$START_MARKER/,/$END_MARKER/{//!d;}; /$START_MARKER/r $TEMP_FILE" Makefile
 else
   # If markers don't exist, append the source file list at the end
-  echo -e "\n$START_MARKER\n# List of source files:\nSRC = $FILE_LIST\n$END_MARKER" >> Makefile
+  printf "\n%s\n# List of source files:\nSRC = \\\n%s\n%s\n" "$START_MARKER" "$FILE_LIST" "$END_MARKER" >> Makefile
 fi
 
 # Move the backup Makefile to the .bak folder
