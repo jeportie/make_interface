@@ -59,10 +59,8 @@ else
   printf "\n%s\n# List of source files:\nSRC = \\\n%s\n%s\n" "$START_MARKER" "$FILE_LIST" "$END_MARKER" >> Makefile
 fi
 
-# Add this command right after updating the Makefile
-# It will look for the '\### END AUTO GENERATED FILES ###' and remove it
-
-sed -i '/\\### END AUTO GENERATED FILES ###/d' Makefile
+# This will remove everything from \### to the end of the line, leaving the file name intact
+sed -i 's/\\###.*//g' Makefile
 
 # Move the backup Makefile to the .bak folder
 mv Makefile.bak $BAK_DIR/
