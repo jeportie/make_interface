@@ -6,7 +6,7 @@
 #    By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/15 19:28:59 by jeportie          #+#    #+#              #
-#    Updated: 2024/09/15 19:57:35 by jeportie         ###   ########.fr        #
+#    Updated: 2024/09/15 20:03:21 by jeportie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,9 +50,9 @@ printf "\n%s" "$FILE_LIST" >> $TEMP_FILE
 # Check if the Makefile exists and contains the marker for auto-generated files
 if grep -q "$START_MARKER" Makefile; then
   # If markers exist, replace the existing list between markers using the temp file
-  sed -i.bak "/$START_MARKER/,/$END_MARKER/{//!d;}" Makefile
-  # Ensure the END marker is correctly placed after the file list
-  printf "%s\n" "$END_MARKER" >> $TEMP_FILE
+  sed -i.bak "/$START_MARKER/,/$END_MARKER/d" Makefile
+  # Add the content and ensure the END marker is placed correctly after the file list
+  printf "\n%s\n" "$END_MARKER" >> $TEMP_FILE
   sed -i "/$START_MARKER/r $TEMP_FILE" Makefile
 else
   # If markers don't exist, append the source file list at the end
