@@ -6,7 +6,7 @@
 #    By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/15 19:28:59 by jeportie          #+#    #+#              #
-#    Updated: 2024/09/15 19:35:59 by jeportie         ###   ########.fr        #
+#    Updated: 2024/09/15 19:38:21 by jeportie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,11 +31,11 @@ END_MARKER="### END AUTO GENERATED FILES ###"
 # Prepare the format of the file list for the Makefile
 FILE_LIST=""
 for FILE in $SRC_FILES; do
-  FILE_LIST="$FILE_LIST  $FILE \\\n"
+  FILE_LIST="$FILE_LIST  $FILE \\\\\n"
 done
 
 # Remove the trailing '\' from the last file
-FILE_LIST=$(printf "$FILE_LIST" | sed '$ s/\\//')
+FILE_LIST=$(echo -e "$FILE_LIST" | sed '$ s/\\\\//')
 
 # Ensure the .bak folder exists
 mkdir -p $BAK_DIR
@@ -43,7 +43,7 @@ mkdir -p $BAK_DIR
 # Temporary file to hold the new file list content
 TEMP_FILE=$(mktemp)
 
-# Write the new SRC content to the temp file using printf for better formatting
+# Write the new SRC content to the temp file
 printf "# List of source files:\nSRC = \\\n%s" "$FILE_LIST" > $TEMP_FILE
 
 # Check if the Makefile exists and contains the marker for auto-generated files
