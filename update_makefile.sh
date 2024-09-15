@@ -49,10 +49,9 @@ printf "\n%s" "$FILE_LIST" >> $TEMP_FILE
 
 # Check if the Makefile exists and contains the marker for auto-generated files
 if grep -q "$START_MARKER" Makefile; then
-  # If markers exist, replace the existing list between markers using the temp file
-  sed -i.bak "/$START_MARKER/,/$END_MARKER/d" Makefile
-  # Add the content and ensure the END marker is placed correctly after the file list
-  printf "\n%s\n" "$END_MARKER" >> $TEMP_FILE
+  # If markers exist, delete everything between the markers, but not the markers themselves
+  sed -i.bak "/$START_MARKER/,/$END_MARKER/{//!d;}" Makefile
+  # Append the new content between the markers, and ensure the END marker is placed correctly
   sed -i "/$START_MARKER/r $TEMP_FILE" Makefile
 else
   # If markers don't exist, append the source file list at the end
@@ -66,3 +65,4 @@ mv Makefile.bak $BAK_DIR/
 rm -f $TEMP_FILE
 
 echo "Makefile updated with new .c files. Backup stored in .bak/"
+
