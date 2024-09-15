@@ -6,7 +6,7 @@
 #    By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/15 19:28:59 by jeportie          #+#    #+#              #
-#    Updated: 2024/09/15 19:29:01 by jeportie         ###   ########.fr        #
+#    Updated: 2024/09/15 19:32:46 by jeportie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,12 +40,16 @@ FILE_LIST=$(echo -e "$FILE_LIST" | sed '$ s/\\//')
 # Ensure the .bak folder exists
 mkdir -p $BAK_DIR
 
+# Temporary file to hold the new file list content
+TEMP_FILE=$(mktemp)
+
+# Write the new SRC content to the temp file
+echo -e "# List of source files:\nSRC = $FILE_LIST" > $TEMP_FILE
+
 # Check if the Makefile exists and contains the marker for auto-generated files
 if grep -q "$START_MARKER" Makefile; then
-  # If markers exist, replace the existing list between markers
-  sed -i.bak "/$START_MARKER/,/$END_MARKER/{//!d;}; /$START_MARKER/r /dev/stdin" Makefile <<<"\
-# List of source files:
-SRC = $FILE_LIST"
+  # If markers exist, replace the existing list between markers using the temp file
+  sed -i.bak "/$START_MARKER/,/$END_MARKER/{//!d;}; /$START_MARKER/r $TEMP_FILE" Makefile
 else
   # If markers don't exist, append the source file list at the end
   echo -e "\n$START_MARKER\n# List of source files:\nSRC = $FILE_LIST\n$END_MARKER" >> Makefile
@@ -53,5 +57,8 @@ fi
 
 # Move the backup Makefile to the .bak folder
 mv Makefile.bak $BAK_DIR/
+
+# Remove the temporary file
+rm -f $TEMP_FILE
 
 echo "Makefile updated with new .c files. Backup stored in .bak/"
