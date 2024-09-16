@@ -6,7 +6,7 @@
 #    By: jeportie <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/12 14:15:40 by jeportie          #+#    #+#              #
-#    Updated: 2024/09/16 16:35:47 by jeportie         ###   ########.fr        #
+#    Updated: 2024/09/16 16:40:08 by jeportie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -227,6 +227,7 @@ help:
 	@echo "$(GREEN)  fclean         $(RESET)- Removes object files and the executable."
 	@echo "$(GREEN)  fullclean      $(RESET)- Removes the interface, object files, and executable."
 	@echo "$(GREEN)  re             $(RESET)- Cleans and recompiles the project."
+	@echo "$(GREEN)  build          $(RESET)- Run the Makefile builder script."
 	@echo "$(GREEN)  update         $(RESET)- Update the .c source files list in Makefile."
 	@echo "$(GREEN)  uml            $(RESET)- Enter in the UML schematics menu of the projects."
 	@echo "$(GREEN)  calendar       $(RESET)- Displays the project calendar."
