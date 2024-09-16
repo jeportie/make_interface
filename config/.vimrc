@@ -1,3 +1,15 @@
+" **************************************************************************** "
+"                                                                              "
+"                                                         :::      ::::::::    "
+"    .vimrc                                             :+:      :+:    :+:    "
+"                                                     +:+ +:+         +:+      "
+"    By: jeportie <marvin@42.fr>                    +#+  +:+       +#+         "
+"                                                 +#+#+#+#+#+   +#+            "
+"    Created: 2024/09/16 08:25:39 by jeportie          #+#    #+#              "
+"    Updated: 2024/09/16 09:35:37 by jeportie         ###   ########.fr        "
+"                                                                              "
+" **************************************************************************** "
+
 "==============================================================================
 "                                   VIM CONFIG
 "==============================================================================
@@ -53,6 +65,7 @@ nmap <F3> :TagbarToggle<CR>
 nnoremap <F4> :Files<CR>
 nnoremap <C-M> :bnext<CR>
 nnoremap <C-N> :bprev<CR>
+tnoremap <F5> <C-w>N
 
 "==============================================================================
 "                                 PLUGIN SETTINGS
@@ -65,6 +78,7 @@ call vundle#begin('~/.vim/plugged')
 Plugin 'VundleVim/Vundle.vim'      " Let Vundle manage itself
 
 "----------------------------- PLUGIN LIST ------------------------------------
+Plugin 'jeromeDev94/NorminetteRun'
 Plugin 'tyru/open-browser.vim'
 Plugin 'aklt/plantuml-syntax'
 Plugin 'scrooloose/vim-slumlord'
@@ -148,7 +162,4 @@ let g:plantuml_executable_script = "~/bin/plantuml.sh"
 "==============================================================================
 
 " Norminette auto-load for 42 files
-autocmd BufRead,BufNewFile *.c,*.h source ~/.vim/syntax/norminette.vim
-autocmd BufRead,BufNewFile *.c,*.h source ~/.vim/plugin/norminette.vim
 nnoremap <Leader>n :NorminetteRun<CR>
-
