@@ -6,7 +6,7 @@
 #    By: jeportie <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/12 14:15:40 by jeportie          #+#    #+#              #
-#    Updated: 2024/09/16 15:59:02 by jeportie         ###   ########.fr        #
+#    Updated: 2024/09/16 16:35:47 by jeportie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -85,7 +85,7 @@ SCRIPT_URL = https://github.com/jeromeDev94/make_interface.git
 
 # Default target
 run-prompt: download-script
-	@./make_interface/make_prompt
+	@./make_interface/exec/make_prompt
 
 all: $(NAME)
 
@@ -93,7 +93,7 @@ $(NAME): $(OBJ) $(OBJ_DIR)/main.o
 	echo "Compiling..."
 	$(CC) $(CFLAGS) $(INCLUDES) $(LIB_DIR) $(OBJ) $(OBJ_DIR)/main.o -o \
 		$(NAME) $(LIB) > .compile.log 2>&1
-	./make_interface/progress $(TOTAL_STEPS) .compile.log
+	./make_interface/exec/progress $(TOTAL_STEPS) .compile.log
 	echo "Compilation complete."
 
 $(OBJ_DIR):
@@ -176,10 +176,14 @@ calendar: create-cal
 		-c ":bd .calendar/$(NAME).calendar" 
 
 uml:
-	@./make_interface/interactive_select 
+	@./make_interface/exec/interactive_select 
+
+build:
+	@./make_interface/config/build
+	make update
 
 update:
-	./make_interface/update_makefile.sh
+	./make_interface/exec/update_makefile.sh
 
 debug:
 	@echo "Searching for '# define DEBUG' in headers..."
@@ -236,7 +240,7 @@ download-script:
 	@if [ ! -d make_interface ]; then \
 		echo "Downloading make_interface script..."; \
 		git clone $(SCRIPT_URL) > .download.log 2>&1;\
-		./make_interface/progress 10 .download.log; \
+		./make_interface/exec/progress 10 .download.log; \
 		chmod +x make_interface/make_prompt; \
 		echo "Script downloaded !"; \
 		make -s help; \
