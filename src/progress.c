@@ -12,12 +12,11 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
 #include <unistd.h>
 
 #define BAR_WIDTH 20
-#define MAX_SLEEP_USEC 500000  // 1 second in microseconds
-#define MIN_SLEEP_USEC 10000    // 10 ms in microseconds
+#define MAX_SLEEP_USEC 500000
+#define MIN_SLEEP_USEC 10000
 
 void	print_progress(int step, int total)
 {
