@@ -1,0 +1,194 @@
+
+# Git Team Protocol with Vim Fugitive and GV
+
+## 1. Understanding Basic Git Workflow in Teams
+In a team project, you need to manage not only your changes but also those made by 
+others. Here's a simple workflow you can follow:
+
+### Clone the repository:
+If you're starting fresh with a shared repository.
+```
+git clone https://github.com/user/repo.git
+```
+Or, use `:Git clone` within Vim.
+
+### Create and Switch Branches:
+In a team, you typically work on a feature or bugfix in a separate branch to avoid 
+conflicts.
+   
+- **Create a branch**:
+    ```
+    git checkout -b feature-branch-name
+    ```
+    In Fugitive, you can run this from Vim with `:Git checkout -b feature-branch-name`.
+
+- **Switch branches**:
+    ```
+    git checkout main
+    ```
+    In Fugitive, run `:Git checkout main`.
+
+### Pull latest changes from the main branch:
+Always make sure to stay up-to-date with the main branch before starting work on 
+your feature.
+```
+git pull origin main
+```
+In Fugitive, `:Git pull origin main`.
+
+### Merge or Rebase:
+When your feature is ready, you need to integrate your changes with the main branch. 
+There are two approaches:
+   
+- **Merge**: Integrates the entire feature branch into the main branch.
+    ```
+    git checkout main
+    git merge feature-branch-name
+    ```
+    Fugitive: `:Git checkout main` then `:Git merge feature-branch-name`.
+   
+- **Rebase**: Replays your changes on top of the current main branch, keeping the 
+history cleaner.
+    ```
+    git rebase main
+    ```
+    Fugitive: `:Git rebase main`.
+
+### Push your changes:
+Once you've merged or rebased, push your changes.
+```
+git push origin main
+```
+Fugitive: `:Git push`.
+
+---
+
+## 2. Using Fugitive in Vim
+
+- **View the Git status**: To see the current status of your repo, run `:G` in Vim. 
+This is equivalent to running `git status` in the terminal. You'll see any modified 
+files, untracked files, etc.
+
+- **Stage and commit changes**:
+   - To stage a specific file: `:Gwrite` on the file.
+   - To commit: `:Git commit` followed by the commit message.
+   - To push: `:Git push`.
+
+- **View diffs**: Use `:Gdiff` to see changes between your working directory and the 
+latest commit. This is useful to check what’s different before committing.
+
+- **Interactive commands**: Use `:Git` followed by any Git command you'd use in the 
+terminal.
+
+---
+
+## 3. Using GV for Commit History
+
+- **View Git history**: Simply run `:GV` to see a graphical commit history like the 
+one you shared. This helps you understand how your project has evolved and spot 
+commits from others on the team.
+   - You can scroll through the commits and press enter to open details.
+   
+- **Checkout previous commits**: If you need to go back to a previous commit for 
+testing, highlight a commit and press `enter`. This effectively checks out that 
+commit in a detached HEAD state. 
+
+- **Compare commits**: Use `:GV!` to open a visual comparison between two commits.
+
+---
+
+## 4. Efficient Team Workflow
+Here’s a streamlined approach for working with a team at 42:
+
+1. **Pull the latest changes from the main branch**:
+   ```
+   git pull origin main
+   ```
+   Vim: `:Git pull origin main`.
+   
+2. **Create a feature branch**:
+   ```
+   git checkout -b feature-branch
+   ```
+   Vim: `:Git checkout -b feature-branch`.
+
+3. **Make your changes in the feature branch**. Use `:Gdiff` to verify your changes.
+
+4. **Commit your changes**:
+   - Stage files: `:Gwrite`.
+   - Commit: `:Git commit -m "message"`.
+
+5. **Push your feature branch**:
+   ```
+   git push origin feature-branch
+   ```
+   Vim: `:Git push origin feature-branch`.
+
+6. **Create a Pull Request**: Once your work is ready, you can open a pull request 
+in GitHub for others to review your code.
+
+7. **Merge back to main**:
+   Once your pull request is approved, pull the latest changes from the main branch 
+again, merge your feature branch, and push the result:
+   ```
+   git checkout main
+   git pull origin main
+   git merge feature-branch
+   git push origin main
+   ```
+   Vim: `:Git checkout main`, `:Git merge feature-branch`, and `:Git push`.
+
+---
+
+## 5. Resolving Merge Conflicts
+In a team, conflicts happen when two people change the same part of a file. If you 
+encounter conflicts:
+
+1. **Pull the latest changes**: 
+   ```
+   git pull origin main
+   ```
+2. **Resolve conflicts manually**:
+   - Open the conflicted files in Vim. Fugitive will show conflict markers 
+   `<<<<<`, `=====`, `>>>>>`.
+   - Edit the file to resolve the conflict.
+   - Stage the resolved file: `:Gwrite`.
+   - Commit: `:Git commit`.
+
+---
+
+## 6. Extracting an Old Commit to a New Branch
+
+If you need to extract an old commit and continue working on it in a new branch, 
+follow these steps:
+
+1. **View the commit history**:
+   Use `:GV` to visually browse your commit history and locate the commit you want 
+to work with.
+
+2. **Checkout the old commit**:
+   Highlight the desired commit in the GV commit history, and press `Enter`. This 
+checks out the commit in a detached `HEAD` state.
+
+3. **Create a new branch from this commit**:
+   Once you're in the desired commit, create a new branch to start working from 
+this point forward:
+   ```
+   git checkout -b new-branch-from-old-commit
+   ```
+   In Vim Fugitive, you can do this with `:Git checkout -b new-branch-from-old-commit`.
+
+4. **Continue working**:
+   Now you can continue making changes and commits on this new branch without 
+affecting the current main branch or any other work.
+
+5. **Push the new branch**:
+   Once you're ready, you can push the new branch to the remote repository:
+   ```
+   git push origin new-branch-from-old-commit
+   ```
+   In Vim Fugitive, run `:Git push origin new-branch-from-old-commit`.
+
+By following this process, you can easily extract an old commit and continue working 
+on it in a new branch, allowing you to manage features or changes that may have 
+been forgotten or need additional work.
