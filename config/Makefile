@@ -170,6 +170,9 @@ build:
 update:
 	./make_interface/exec/update_makefile.sh
 
+git:
+	@vim -c ":GV"
+
 debug:
 	@echo "Searching for '# define DEBUG' in headers..."
 	@grep -Hn '# define DEBUG' include/*.h || echo "No DEBUG flag found."
@@ -214,6 +217,7 @@ help:
 	@echo "$(GREEN)  re             $(RESET)- Cleans and recompiles the project."
 	@echo "$(GREEN)  build          $(RESET)- Run the Makefile builder script."
 	@echo "$(GREEN)  update         $(RESET)- Update the .c source files list in Makefile."
+	@echo "$(GREEN)  git            $(RESET)- Opens git interface in vim."
 	@echo "$(GREEN)  uml            $(RESET)- Enter in the UML schematics menu of the projects."
 	@echo "$(GREEN)  calendar       $(RESET)- Displays the project calendar."
 	@echo "$(GREEN)  todo           $(RESET)- Displays the project todo list."
