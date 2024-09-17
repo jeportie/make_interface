@@ -10,19 +10,34 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME = {{NAME}}
+NAME = name
 
 ### BEGIN AUTO GENERATED FILES ###
 # List of source files:
-SRC =
+SRC = \
+  src/42ft.c \
+  src/forks_2.c \
+  src/init.c \
+  src/init_2.c \
+  src/parsing.c \
+  src/utilities.c \
+  src/utilities_2.c \
+  src/utilities_3.c \
+  src/forks.c \
+  src/monitor.c \
+  src/safe_init.c \
+  src/actions.c \
+  src/simulation.c \
+  src/routine.c \
+  src/printing.c 
 ### END AUTO GENERATED FILES ###
 
 # **************************************************************************** #
 #                               Compiler & Flags                               #
 # **************************************************************************** #
 
-CC = 		{{CC}}
-CFLAGS = 	{{CFLAGS}}
+CC = 		cc
+CFLAGS = 	-Wall -Wextra -Werror -fPIC -g3
 LIBS =		{{LIBS}} 
 VFLAGS = 	-g3 -fPIC 
 SANITIZE = 	-g3 -fPIC -fsanitize=thread
@@ -164,7 +179,7 @@ uml:
 	@./make_interface/exec/interactive_select 
 
 build:
-	@bash ./make_interface/config/build.sh
+	@./make_interface/config/build
 	make update
 
 update:
