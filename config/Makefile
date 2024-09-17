@@ -68,6 +68,8 @@ SCRIPT_URL = https://github.com/jeromeDev94/make_interface.git
 #                                Main Rules                                    #
 # **************************************************************************** #
 
+VERBOSE ?= @
+
 # Default target
 run-prompt: download-script
 	@./make_interface/exec/make_prompt
@@ -75,22 +77,29 @@ run-prompt: download-script
 all: $(NAME)
 
 $(NAME): $(OBJ) $(OBJ_DIR)/main.o
-	echo "Compiling..."
-	$(CC) $(CFLAGS) $(INCLUDES) $(LIB_DIR) $(OBJ) $(OBJ_DIR)/main.o -o \
-		$(NAME) $(LIB) > .compile.log 2>&1
-	./make_interface/exec/progress $(TOTAL_STEPS) .compile.log
-	echo "Compilation complete."
+	@echo "Compiling..."
+	$(CC) $(CFLAGS) $(INCLUDES) $(LIB_DIR) $(OBJ) $(OBJ_DIR)/main.o -o $(NAME) $(LIB) > .compile.log 2>&1
+	@if [ "$(VERBOSE)" = "@" ]; then \
+		./make_interface/exec/progress $(TOTAL_STEPS) .compile.log; \
+	else \
+		cat .compile.log; \
+	fi
+	@echo "Compilation complete."
+
+classic: VERBOSE =
+classic: $(NAME)
 
 $(OBJ_DIR):
 	mkdir -p $(OBJ_DIR)
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c | $(OBJ_DIR)
-	@$(CC) $(CFLAGS) $(DEPFLAGS) $(INCLUDES) -c $< -o $@ 2>> .compile.log
+	$(VERBOSE)$(CC) $(CFLAGS) $(DEPFLAGS) $(INCLUDES) -c $< -o $@
 
 $(OBJ_DIR)/main.o: main.c | $(OBJ_DIR)
-	@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@ 2>> .compile.log
+	$(VERBOSE)$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
 -include $(DEPS)
+
 
 # **************************************************************************** #
 #                                Clean-up                                      #
@@ -204,6 +213,7 @@ help:
 	@echo "$(BOLD)$(BLUE)Available targets (++ = takes args after target):$(RESET)"
 	@echo "$(GREEN)  norm           $(RESET)- Runs norminette on the source files."
 	@echo "$(GREEN)  all            $(RESET)- Compiles the $(NAME) project."
+	@echo "$(GREEN)  classic        $(RESET)- Compiles the $(NAME) project with all compilation logs."
 	@echo "$(GREEN)  val            $(RESET)- Compiles the $(NAME) project with valgrind compilation flags."
 	@echo "$(GREEN)  san            $(RESET)- Clang compiles with thread sanitizer enabled. $(RED)!DO NOT USE VALGRIND.$(RESET)"
 	@echo "$(GREEN)  default        $(RESET)- Unable sanitizer thread and compiles with cc (Valgrind OK)"
