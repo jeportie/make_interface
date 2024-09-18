@@ -61,6 +61,9 @@ else
   printf "\n%s\n# List of source files:\nSRC = \\\n%s\n%s\n" "$START_MARKER" "$FILE_LIST" "$END_MARKER" >> Makefile
 fi
 
+grep -q "### END AUTO GENERATED FILES ###" Makefile || sed -i '18i### END AUTO GENERATED FILES ###\n' Makefile
+
+
 #sed -i 's/\\###.*//g' Makefile
 
 # Ensure there is only one instance of '### END AUTO GENERATED FILES ###' in a row, but only if the marker exists
