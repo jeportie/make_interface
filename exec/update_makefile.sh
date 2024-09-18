@@ -64,10 +64,8 @@ sed -i 's/\\###.*//g' Makefile
 # Ensure there is only one instance of '### END AUTO GENERATED FILES ###' in a row, but only if the marker exists
 if grep -q "^### END AUTO GENERATED FILES ###" Makefile; then
     # Only proceed with checking for consecutive duplicates of the END marker
-    #   U
     sed -i '/^### END AUTO GENERATED FILES ###$/N;/\n### END AUTO GENERATED FILES ###$/d' Makefile
 fi
-
 
 # Move the backup Makefile to the .bak folder
 mv Makefile.bak $BAK_DIR/

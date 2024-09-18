@@ -202,6 +202,9 @@ debug:
 		echo "No '# define DEBUG' found in headers."; \
 	fi
 
+bak:
+	rm Makefile && cp .bak/Makefile.bak . && mv Makefile.bak Makefile
+
 help:
 	@echo "$(BOLD)$(YELLOW)------------------- $(NAME) project Makefile (42 school) ---------------------------------$(RESET)"
 	@echo ""
