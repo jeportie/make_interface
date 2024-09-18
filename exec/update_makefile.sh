@@ -59,7 +59,7 @@ else
   printf "\n%s\n# List of source files:\nSRC = \\\n%s\n%s\n" "$START_MARKER" "$FILE_LIST" "$END_MARKER" >> Makefile
 fi
 
-sed -i 's/\\###.*//g' Makefile
+#sed -i 's/\\###.*//g' Makefile
 
 # Search for the exact pattern: SRC = \ followed by an empty line and the #************* line
 sed -i '/^SRC = \\$/{
@@ -68,10 +68,10 @@ sed -i '/^SRC = \\$/{
 }' Makefile
 
 # Ensure there is only one instance of '### END AUTO GENERATED FILES ###' in a row, but only if the marker exists
-if grep -q "^### END AUTO GENERATED FILES ###" Makefile; then
+#if grep -q "^### END AUTO GENERATED FILES ###" Makefile; then
     # Only proceed with checking for consecutive duplicates of the END marker
-    sed -i '/^### END AUTO GENERATED FILES ###$/N;/\n### END AUTO GENERATED FILES ###$/d' Makefile
-fi
+ #   sed -i '/^### END AUTO GENERATED FILES ###$/N;/\n### END AUTO GENERATED FILES ###$/d' Makefile
+#fi
 
 
 
