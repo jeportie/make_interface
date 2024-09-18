@@ -61,7 +61,7 @@ else
   printf "\n%s\n# List of source files:\nSRC = \\\n%s\n%s\n" "$START_MARKER" "$FILE_LIST" "$END_MARKER" >> Makefile
 fi
 
-grep -q "### END AUTO GENERATED FILES ###" Makefile || sed -i '18i### END AUTO GENERATED FILES ###\n' Makefile
+#grep -q "### END AUTO GENERATED FILES ###" Makefile || sed -i '18i### END AUTO GENERATED FILES ###\n' Makefile
 
 
 #sed -i 's/\\###.*//g' Makefile
