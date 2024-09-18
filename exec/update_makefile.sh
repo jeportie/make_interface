@@ -61,27 +61,19 @@ fi
 
 sed -i 's/\\###.*//g' Makefile
 
-# Ensure there is only one instance of '### END AUTO GENERATED FILES ###' in a row, but only if the marker exists
-if grep -q "^### END AUTO GENERATED FILES ###" Makefile; then
-    # Only proceed with checking for consecutive duplicates of the END marker
-    sed -i '/^### END AUTO GENERATED FILES ###$/N;/\n### END AUTO GENERATED FILES ###$/d' Makefile
-fi
-
-# Ensure there is only one instance of '### END AUTO GENERATED FILES ###' in a row, but only if the marker exists
-if grep -q "^### END AUTO GENERATED FILES ###" Makefile; then
-    # Only proceed with checking for consecutive duplicates of the END marker
-    sed -i '/^### END AUTO GENERATED FILES ###$/N;/\n### END AUTO GENERATED FILES ###$/d' Makefile
-fi
-
-# This will remove everything from \### to the end of the line, leaving the file name intact
-sed -i 's/\\###.*//g' Makefile
-
-# Rule to replace the empty SRC block with END marker
 # Search for the exact pattern: SRC = \ followed by an empty line and the #************* line
 sed -i '/^SRC = \\$/{
     N
     /^\n#**************************************************************************** #$/s/^\n/### END AUTO GENERATED FILES ###\n/
 }' Makefile
+
+# Ensure there is only one instance of '### END AUTO GENERATED FILES ###' in a row, but only if the marker exists
+if grep -q "^### END AUTO GENERATED FILES ###" Makefile; then
+    # Only proceed with checking for consecutive duplicates of the END marker
+    sed -i '/^### END AUTO GENERATED FILES ###$/N;/\n### END AUTO GENERATED FILES ###$/d' Makefile
+fi
+
+
 
 # Move the backup Makefile to the .bak folder
 mv Makefile.bak $BAK_DIR/
