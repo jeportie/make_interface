@@ -60,10 +60,14 @@ else
 fi
 
 # This will remove everything from \### to the end of the line, leaving the file name intact
-sed -i 's/\\###.*//g' Makefile
+if [ -n "$SRC_FILES" ]; then
+  # Only run the sed command if there are .c files
+  sed -i 's/\\###.*//g' Makefile
+else
+  # If there are no .c files, do nothing
+  echo "No .c files found. Makefile unchanged."
+fi
 
-# This will remove everything from \### to the end of the line, leaving the file name intact
-sed -i 's/\\###.*//g' Makefile
 
 # Ensure there is only one instance of '### END AUTO GENERATED FILES ###' in a row, but only if the marker exists
 if grep -q "^### END AUTO GENERATED FILES ###" Makefile; then
