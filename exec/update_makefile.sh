@@ -50,9 +50,7 @@ printf "\n%s" "$FILE_LIST" >> $TEMP_FILE
 # Check if the Makefile exists and contains the marker for auto-generated files
 if grep -q "$START_MARKER" Makefile; then
   # If markers exist, replace the existing list between markers using the temp file
-  if grep -q "$END_MARKER" Makefile; then
-    sed -i.bak "/$START_MARKER/,/$END_MARKER/{//!d;}" Makefile
-  fi
+  sed -i.bak "/$START_MARKER/,/$END_MARKER/{//!d;}" Makefile
   # Ensure the END marker is correctly placed after the file list
   printf "%s\n" "$END_MARKER" >> $TEMP_FILE
   sed -i "/$START_MARKER/r $TEMP_FILE" Makefile
@@ -61,17 +59,14 @@ else
   printf "\n%s\n# List of source files:\nSRC = \\\n%s\n%s\n" "$START_MARKER" "$FILE_LIST" "$END_MARKER" >> Makefile
 fi
 
-#grep -q "### END AUTO GENERATED FILES ###" Makefile || sed -i '18i### END AUTO GENERATED FILES ###\n' Makefile
-
-
-#sed -i 's/\\###.*//g' Makefile
+sed -i 's/\\###.*//g' Makefile
 
 # Ensure there is only one instance of '### END AUTO GENERATED FILES ###' in a row, but only if the marker exists
-#if grep -q "^### END AUTO GENERATED FILES ###" Makefile; then
+if grep -q "^### END AUTO GENERATED FILES ###" Makefile; then
     # Only proceed with checking for consecutive duplicates of the END marker
     #   U
- #   sed -i '/^### END AUTO GENERATED FILES ###$/N;/\n### END AUTO GENERATED FILES ###$/d' Makefile
-#fi
+    sed -i '/^### END AUTO GENERATED FILES ###$/N;/\n### END AUTO GENERATED FILES ###$/d' Makefile
+fi
 
 
 # Move the backup Makefile to the .bak folder
