@@ -78,8 +78,10 @@ sed -i 's/\\###.*//g' Makefile
 
 # Rule to replace the empty SRC block with END marker
 # Search for the exact pattern: SRC = \ followed by an empty line and the #************* line
-sed -i '/^SRC = \\\n\n#**************************************************************************** #$/s/^SRC = \\\n\n/SRC = \\\n### END AUTO GENERATED FILES ###\n/' Makefile
-
+sed -i '/^SRC = \\$/{
+    N
+    /^\n#**************************************************************************** #$/s/^\n/### END AUTO GENERATED FILES ###\n/
+}' Makefile
 
 # Move the backup Makefile to the .bak folder
 mv Makefile.bak $BAK_DIR/
