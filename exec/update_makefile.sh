@@ -59,16 +59,14 @@ else
   printf "\n%s\n# List of source files:\nSRC = \\\n%s\n%s\n" "$START_MARKER" "$FILE_LIST" "$END_MARKER" >> Makefile
 fi
 
-grep -q "### END AUTO GENERATED FILES ###" Makefile || sed -i '18i### END AUTO GENERATED FILES ###\n' Makefile
-
-sed -i 's/\\###.*//g' Makefile
+#sed -i 's/\\###.*//g' Makefile
 
 # Ensure there is only one instance of '### END AUTO GENERATED FILES ###' in a row, but only if the marker exists
-if grep -q "^### END AUTO GENERATED FILES ###" Makefile; then
+#if grep -q "^### END AUTO GENERATED FILES ###" Makefile; then
     # Only proceed with checking for consecutive duplicates of the END marker
-       U
-    sed -i '/^### END AUTO GENERATED FILES ###$/N;/\n### END AUTO GENERATED FILES ###$/d' Makefile
-fi
+    #   U
+ #   sed -i '/^### END AUTO GENERATED FILES ###$/N;/\n### END AUTO GENERATED FILES ###$/d' Makefile
+#fi
 
 
 # Move the backup Makefile to the .bak folder
