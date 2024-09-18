@@ -62,10 +62,8 @@ fi
 #sed -i 's/\\###.*//g' Makefile
 
 # If 'SRC = \' is followed by a new line, insert '### END AUTO GENERATED FILES ###' just after 'SRC = \'
-sed -i '/^SRC = \\$/{
-    N
-    /^\n/s/\n/### END AUTO GENERATED FILES ###\n/
-}' Makefile
+sed -i '/^SRC = \\$/a\### END AUTO GENERATED FILES ###' Makefile
+
 
 # Ensure there is only one instance of '### END AUTO GENERATED FILES ###' in a row, but only if the marker exists
 #if grep -q "^### END AUTO GENERATED FILES ###" Makefile; then
