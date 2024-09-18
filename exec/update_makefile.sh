@@ -61,18 +61,18 @@ fi
 
 #sed -i 's/\\###.*//g' Makefile
 
-# Replace empty SRC block with END marker
-sed -i '/^SRC = \\\n$/{
+# If 'SRC = \' is followed by a new line, insert '### END AUTO GENERATED FILES ###' just after 'SRC = \'
+sed -i '/^SRC = \\$/{
     N
-    s/\n#**************************************************************************** #/### END AUTO GENERATED FILES ###\n#**************************************************************************** #/
+    /^\n/s/\n/### END AUTO GENERATED FILES ###\n/
 }' Makefile
 
 # Ensure there is only one instance of '### END AUTO GENERATED FILES ###' in a row, but only if the marker exists
 #if grep -q "^### END AUTO GENERATED FILES ###" Makefile; then
     # Only proceed with checking for consecutive duplicates of the END marker
+    #   U
  #   sed -i '/^### END AUTO GENERATED FILES ###$/N;/\n### END AUTO GENERATED FILES ###$/d' Makefile
 #fi
-
 
 
 # Move the backup Makefile to the .bak folder
