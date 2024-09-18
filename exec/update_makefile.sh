@@ -61,10 +61,10 @@ fi
 
 #sed -i 's/\\###.*//g' Makefile
 
-# Search for the exact pattern: SRC = \ followed by an empty line and the #************* line
-sed -i '/^SRC = \\$/{
+# Replace empty SRC block with END marker
+sed -i '/^SRC = \\\n$/{
     N
-    /^\n#**************************************************************************** #$/s/^\n/### END AUTO GENERATED FILES ###\n/
+    s/\n#**************************************************************************** #/### END AUTO GENERATED FILES ###\n#**************************************************************************** #/
 }' Makefile
 
 # Ensure there is only one instance of '### END AUTO GENERATED FILES ###' in a row, but only if the marker exists
