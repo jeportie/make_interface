@@ -6,7 +6,7 @@
 #    By: jeportie <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/12 14:15:40 by jeportie          #+#    #+#              #
-#    Updated: 2024/09/16 16:40:08 by jeportie         ###   ########.fr        #
+#    Updated: 2024/09/19 13:18:01 by jeportie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -170,7 +170,11 @@ calendar: create-cal
 		-c ":bd .calendar/$(NAME).calendar" 
 
 uml:
-	@./make_interface/exec/interactive_select 
+	@if sudo -n true 2>/dev/null; then \
+		./make_interface/exec/interactive_select_sudo; \
+	else \
+		./make_interface/exec/interactive_select; \
+	fi
 
 build:
 	@bash ./make_interface/config/build.sh
