@@ -1,5 +1,6 @@
 !_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
 !_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+<<<<<<< HEAD
 !_TAG_OUTPUT_EXCMD	mixed	/number, pattern, mixed, or combineV2/
 !_TAG_OUTPUT_FILESEP	slash	/slash or backslash/
 !_TAG_OUTPUT_MODE	u-ctags	/u-ctags or e-ctags/
@@ -39,11 +40,21 @@ BAR_WIDTH	src/progress.c	/^#define BAR_WIDTH /;"	d	file:
 BLUE	config/Makefile	/^BLUE    = \\033[34m$/;"	m
 BOLD	config/Makefile	/^BOLD    = \\033[1m$/;"	m
 C Debugging	config/.vimspector.json	/^    "C Debugging": {$/;"	o	object:configurations
+=======
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+BAR_WIDTH	src/progress.c	17;"	d	file:
+BLUE	config/Makefile	/^BLUE    = \\033[34m$/;"	m
+BOLD	config/Makefile	/^BOLD    = \\033[1m$/;"	m
+>>>>>>> e8a638499a29bb548b47d17490cfe8aed79e7dee
 CC	config/Makefile	/^CC = 		{{CC}}$/;"	m
 CC	config/Makefile	/^default: CC = cc$/;"	m
 CC	config/Makefile	/^san: CC = clang$/;"	m
 CC	config/Makefile	/^val: CC = cc$/;"	m
 CFLAGS	config/Makefile	/^CFLAGS = 	{{CFLAGS}}$/;"	m
+<<<<<<< HEAD
 Contributing	README.md	/^## Contributing$/;"	s	chapter:Make Interface Project
 DEPFLAGS	config/Makefile	/^DEPFLAGS =  -MMD -MP$/;"	m
 DEPS	config/Makefile	/^DEPS = 		$(OBJ:.o=.d)$/;"	m
@@ -79,19 +90,43 @@ RED	config/Makefile	/^RED     = \\033[31m$/;"	m
 RED	src/make_prompt.c	/^#define RED /;"	d	file:
 RESET	config/Makefile	/^RESET   = \\033[0m$/;"	m
 Running the Make Prompt	README.md	/^### Running the Make Prompt$/;"	S	section:Make Interface Project""Usage
+=======
+DEPFLAGS	config/Makefile	/^DEPFLAGS =  -MMD -MP$/;"	m
+DEPS	config/Makefile	/^DEPS = 		$(OBJ:.o=.d)$/;"	m
+GREEN	config/Makefile	/^GREEN   = \\033[32m$/;"	m
+GREEN	src/make_prompt.c	21;"	d	file:
+HELG	config/Makefile	/^HELG =      valgrind --tool=helgrind --history-level=full \\$/;"	m
+INCLUDES	config/Makefile	/^INCLUDES =  {{INCLUDES}} $/;"	m
+LIBS	config/Makefile	/^LIBS =		{{LIBS}} $/;"	m
+LIB_DIR	config/Makefile	/^LIB_DIR =	{{DIRLIBS}}$/;"	m
+MAX_FILES	src/interactive_select.c	19;"	d	file:
+MAX_SLEEP_USEC	src/progress.c	18;"	d	file:
+MIN_SLEEP_USEC	src/progress.c	19;"	d	file:
+NAME	config/Makefile	/^NAME = {{NAME}}$/;"	m
+NC	src/make_prompt.c	23;"	d	file:
+OBJ	config/Makefile	/^OBJ = 		$(SRC:$(SRC_DIR)\/%.c=$(OBJ_DIR)\/%.o)$/;"	m
+OBJ_DIR	config/Makefile	/^OBJ_DIR = 	obj$/;"	m
+RED	config/Makefile	/^RED     = \\033[31m$/;"	m
+RED	src/make_prompt.c	22;"	d	file:
+RESET	config/Makefile	/^RESET   = \\033[0m$/;"	m
+>>>>>>> e8a638499a29bb548b47d17490cfe8aed79e7dee
 SANITIZE	config/Makefile	/^SANITIZE = 	-g3 -fPIC -fsanitize=thread$/;"	m
 SCRIPT_URL	config/Makefile	/^SCRIPT_URL = https:\/\/github.com\/jeromeDev94\/make_interface.git$/;"	m
 SRC	config/Makefile	/^SRC =$/;"	m
 SRC_DIR	config/Makefile	/^SRC_DIR = 	src$/;"	m
 TOTAL_STEPS	config/Makefile	/^TOTAL_STEPS := $(words $(OBJ))$/;"	m
+<<<<<<< HEAD
 Table of Contents	README.md	/^## Table of Contents$/;"	s	chapter:Make Interface Project
 Targets	README.md	/^### Targets$/;"	S	section:Make Interface Project""Makefile Structure
 UML Diagram Management	README.md	/^### UML Diagram Management$/;"	S	section:Make Interface Project""Usage
 Usage	README.md	/^## Usage$/;"	s	chapter:Make Interface Project
+=======
+>>>>>>> e8a638499a29bb548b47d17490cfe8aed79e7dee
 VALG	config/Makefile	/^VALG =		valgrind --leak-check=full --show-leak-kinds=all \\$/;"	m
 VERBOSE	config/Makefile	/^VERBOSE ?= @$/;"	m
 VERBOSE	config/Makefile	/^classic: VERBOSE =$/;"	m
 VFLAGS	config/Makefile	/^VFLAGS = 	-g3 -fPIC $/;"	m
+<<<<<<< HEAD
 Variables	README.md	/^### Variables$/;"	S	section:Make Interface Project""Makefile Structure
 YELLOW	config/Makefile	/^YELLOW  = \\033[33m$/;"	m
 adapter	config/.vimspector.json	/^      "adapter": "vscode-cpptools",$/;"	s	object:configurations.C Debugging
@@ -179,3 +214,25 @@ val	config/Makefile	/^val: CFLAGS -= $(SANITIZE)$/;"	t
 val	config/Makefile	/^val: re$/;"	t
 valgrind	config/Makefile	/^valgrind:$/;"	t
 vscode-cpptools	config/.vimspector.json	/^    "vscode-cpptools": {$/;"	o	object:adapters
+=======
+YELLOW	config/Makefile	/^YELLOW  = \\033[33m$/;"	m
+calendar_cache_directory	config/Makefile	/^	vim -c "let g:calendar_cache_directory=expand('.\/.calendar\/')" \\$/;"	m
+create_ycm_extra_conf	config/build.sh	/^create_ycm_extra_conf() {$/;"	f
+display_menu	src/interactive_select.c	/^void	display_menu(WINDOW *menu_win, char *choices[], int n_choices, int hl)$/;"	f
+ft_count_words	src/make_prompt.c	/^static size_t	ft_count_words(char *str, char c)$/;"	f	file:
+ft_extract	src/make_prompt.c	/^static char	*ft_extract(const char **s, char c, char **tab, size_t i)$/;"	f	file:
+ft_free_memory	src/make_prompt.c	/^static void	ft_free_memory(char **tab, size_t i)$/;"	f	file:
+ft_split	src/make_prompt.c	/^char	**ft_split(char const *s, char c)$/;"	f
+ft_strlcpy	src/make_prompt.c	/^size_t	ft_strlcpy(char *dst, const char *src, size_t size)$/;"	f
+ft_substr_len	src/make_prompt.c	/^static size_t	ft_substr_len(char *str, char c)$/;"	f	file:
+generate_src_list	exec/update_makefile.sh	/^generate_src_list() {$/;"	f
+get_uml_files	src/interactive_select.c	/^void	get_uml_files(char *directory, char *file_list[], int *count)$/;"	f
+main	src/interactive_select.c	/^int	main(void)$/;"	f
+main	src/make_prompt.c	/^int	main(void)$/;"	f
+main	src/progress.c	/^int	main(int argc, char **argv)$/;"	f
+print_progress	src/progress.c	/^void	print_progress(int step, int total)$/;"	f
+progressive_sleep	src/progress.c	/^void	progressive_sleep(int step, int total)$/;"	f
+remove_newline	src/make_prompt.c	/^void	remove_newline(char *str)$/;"	f
+run_make_command	src/make_prompt.c	/^void run_make_command(char *target, char *args)$/;"	f
+update_makefile	config/build.sh	/^update_makefile() {$/;"	f
+>>>>>>> e8a638499a29bb548b47d17490cfe8aed79e7dee
