@@ -6,7 +6,7 @@
 #    By: jeportie <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/12 14:15:40 by jeportie          #+#    #+#              #
-#    Updated: 2024/09/19 13:18:01 by jeportie         ###   ########.fr        #
+#    Updated: 2024/10/01 12:03:32 by jeportie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,6 @@ SRC =
 
 CC = 		{{CC}}
 CFLAGS = 	{{CFLAGS}}
-LIBS =		{{LIBS}} 
 VFLAGS = 	-g3 -fPIC 
 SANITIZE = 	-g3 -fPIC -fsanitize=thread
 VALG =		valgrind --leak-check=full --show-leak-kinds=all \
@@ -31,12 +30,12 @@ VALG =		valgrind --leak-check=full --show-leak-kinds=all \
 HELG =      valgrind --tool=helgrind --history-level=full \
 			--track-lockorders=yes --show-below-main=yes --free-is-write=yes
 
+LDFLAGS =	{{LIBDIRS}}
 DEPFLAGS =  -MMD -MP
 INCLUDES =  {{INCLUDES}} 
 
 SRC_DIR = 	src
 OBJ_DIR = 	obj
-LIB_DIR =	{{DIRLIBS}}
 
 # **************************************************************************** #
 #                                 Files                                        #
@@ -61,8 +60,7 @@ BOLD    = \033[1m
 #                           Other Variables                                    #
 # **************************************************************************** #
 
-TOTAL_STEPS := $(words $(OBJ))
-SCRIPT_URL = https://github.com/jeromeDev94/make_interface.git
+SCRIPT_URL = https://github.com/jeportie/make_interface.git
 
 # **************************************************************************** #
 #                                Main Rules                                    #
@@ -80,7 +78,7 @@ $(NAME): $(OBJ) $(OBJ_DIR)/main.o
 	@echo "Compiling..."
 	$(CC) $(CFLAGS) $(INCLUDES) $(LIB_DIR) $(OBJ) $(OBJ_DIR)/main.o -o $(NAME) $(LIB) > .compile.log 2>&1
 	@if [ "$(VERBOSE)" = "@" ]; then \
-		./make_interface/exec/progress $(TOTAL_STEPS) .compile.log; \
+		./make_interface/exec/progress 100 .compile.log; \
 	else \
 		cat .compile.log; \
 	fi
@@ -113,9 +111,12 @@ fclean: clean
 	@echo "Cleaning $(NAME)"
 	@rm -f $(NAME)
 
+tclean:
+	@bash ./make_interface/exec/clean_test.sh
+
 fullclean: fclean
 	@echo "Cleaning Interface"
-	@rm -rf make_interface .download.log .compile.log
+	@rm -rf make_interface .download.log .compile.log tags
 
 # **************************************************************************** #
 #                                Other Rules                                   #
@@ -158,17 +159,6 @@ norm:
 todo:
 	@vim .$(NAME).todo.md
 
-create-cal:
-	@if [ ! -d .calendar ]; then \
-		mkdir -p .calendar; \
-		touch ./.calendar/$(NAME).calendar; \
-	fi
-
-calendar: create-cal
-	vim -c "let g:calendar_cache_directory=expand('./.calendar/')" \
-		-c ":Calendar" .calendar/$(NAME).calendar \
-		-c ":bd .calendar/$(NAME).calendar" 
-
 uml:
 	@if sudo -n true 2>/dev/null; then \
 		./make_interface/exec/interactive_select_sudo; \
@@ -182,9 +172,6 @@ build:
 
 update:
 	./make_interface/exec/update_makefile.sh
-
-git:
-	@vim -c ":GV"
 
 debug:
 	@echo "Searching for '# define DEBUG' in headers..."
@@ -230,13 +217,14 @@ help:
 	@echo "$(GREEN)  debug          $(RESET)- Set the DEBUG flag in the project .h file(s)."
 	@echo "$(GREEN)  clean          $(RESET)- Removes object files."
 	@echo "$(GREEN)  fclean         $(RESET)- Removes object files and the executable."
+	@echo "$(GREEN)  tclean         $(RESET)- Removes test files and the test executables."
 	@echo "$(GREEN)  fullclean      $(RESET)- Removes the interface, object files, and executable."
 	@echo "$(GREEN)  re             $(RESET)- Cleans and recompiles the project."
 	@echo "$(GREEN)  build          $(RESET)- Run the Makefile builder script."
+	@echo "$(GREEN)  bak            $(RESET)- Replace the bak Makefile as Makefile."
 	@echo "$(GREEN)  update         $(RESET)- Update the .c source files list in Makefile."
 	@echo "$(GREEN)  git            $(RESET)- Opens git interface in vim."
 	@echo "$(GREEN)  uml            $(RESET)- Enter in the UML schematics menu of the projects."
-	@echo "$(GREEN)  calendar       $(RESET)- Displays the project calendar."
 	@echo "$(GREEN)  todo           $(RESET)- Displays the project todo list."
 	@echo "$(GREEN)  run-prompt     $(RESET)- Starts a custom Make prompt interface."
 	@echo "$(GREEN)  help           $(RESET)- Displays this help message."
