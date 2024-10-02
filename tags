@@ -1,177 +1,58 @@
 !_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
 !_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
-!_TAG_OUTPUT_EXCMD	mixed	/number, pattern, mixed, or combineV2/
-!_TAG_OUTPUT_FILESEP	slash	/slash or backslash/
-!_TAG_OUTPUT_MODE	u-ctags	/u-ctags or e-ctags/
-!_TAG_PATTERN_LENGTH_LIMIT	96	/0 for no limit/
-!_TAG_PROC_CWD	/home/jeportie/Documents/make_interface/	//
-!_TAG_PROGRAM_AUTHOR	Universal Ctags Team	//
-!_TAG_PROGRAM_NAME	Universal Ctags	/Derived from Exuberant Ctags/
-!_TAG_PROGRAM_URL	https://ctags.io/	/official site/
-!_TAG_PROGRAM_VERSION	5.9.0	//
-$(NAME)	config/Makefile	/^$(NAME): $(OBJ) $(OBJ_DIR)\/main.o$/;"	t
-$(OBJ_DIR)	config/Makefile	/^$(OBJ_DIR):$/;"	t
-$(OBJ_DIR)/%.o	config/Makefile	/^$(OBJ_DIR)\/%.o: $(SRC_DIR)\/%.c | $(OBJ_DIR)$/;"	t
-$(OBJ_DIR)/main.o	config/Makefile	/^$(OBJ_DIR)\/main.o: main.c | $(OBJ_DIR)$/;"	t
-%	config/Makefile	/^%:$/;"	t
-0	config/.vimspector.json	/^          {$/;"	o	array:configurations.C Debugging.configuration.setupCommands
-0	config/.vimspector.json	/^        "~\/.vscode\/cpptools\/debugAdapters\/OpenDebugAD7"$/;"	s	array:adapters.vscode-cpptools.command
-<C-M>	config/.vimrc	/^nnoremap <C-M> :bnext<CR>$/;"	m
-<C-N>	config/.vimrc	/^nnoremap <C-N> :bprev<CR>$/;"	m
-<F2>	config/.vimrc	/^nnoremap <F2> :NERDTreeToggle<CR>$/;"	m
-<F3>	config/.vimrc	/^nmap <F3> :TagbarToggle<CR>$/;"	m
-<F4>	config/.vimrc	/^nnoremap <F4> :Files<CR>$/;"	m
-<Leader>cc	config/.vimrc	/^nnoremap <Leader>cc :set colorcolumn=80<CR>$/;"	m
-<Leader>n	config/.vimrc	/^nnoremap <Leader>n :NorminetteRun<CR>$/;"	m
-<Leader>ncc	config/.vimrc	/^nnoremap <Leader>ncc :set colorcolumn-=80<CR>$/;"	m
-<c-h>	config/.vimrc	/^nnoremap <c-h> :set hlsearch!<CR>$/;"	m
-<leader>L	config/.vimrc	/^nnoremap <leader>L :set list!<CR> $/;"	m
-<leader>bd	config/.vimrc	/^nnoremap <leader>bd :bdelete<CR>$/;"	m
-<leader>nr	config/.vimrc	/^nnoremap <leader>nr :set norelativenumber<CR>$/;"	m
-<leader>r	config/.vimrc	/^nnoremap <leader>r :set relativenumber<CR>$/;"	m
-<leader>s	config/.vimrc	/^nnoremap <leader>s :split<CR>$/;"	m
-<leader>t	config/.vimrc	/^nnoremap <leader>t :terminal<CR>$/;"	m
-<leader>u	config/.vimrc	/^nnoremap <leader>u :NERDTreeRefreshRoot<CR>$/;"	m
-<leader>vs	config/.vimrc	/^nnoremap <leader>vs :vertical split<CR>$/;"	m
-<leader>vt	config/.vimrc	/^nnoremap <leader>vt :vertical terminal<CR>$/;"	m
-Automatic Build Process	README.md	/^### Automatic Build Process$/;"	S	section:Make Interface Project""Usage
-BAR_WIDTH	src/progress.c	/^#define BAR_WIDTH /;"	d	file:
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+BAR_WIDTH	src/progress.c	17;"	d	file:
 BLUE	config/Makefile	/^BLUE    = \\033[34m$/;"	m
 BOLD	config/Makefile	/^BOLD    = \\033[1m$/;"	m
-C Debugging	config/.vimspector.json	/^    "C Debugging": {$/;"	o	object:configurations
 CC	config/Makefile	/^CC = 		{{CC}}$/;"	m
 CC	config/Makefile	/^default: CC = cc$/;"	m
 CC	config/Makefile	/^san: CC = clang$/;"	m
 CC	config/Makefile	/^val: CC = cc$/;"	m
 CFLAGS	config/Makefile	/^CFLAGS = 	{{CFLAGS}}$/;"	m
-Contributing	README.md	/^## Contributing$/;"	s	chapter:Make Interface Project
 DEPFLAGS	config/Makefile	/^DEPFLAGS =  -MMD -MP$/;"	m
 DEPS	config/Makefile	/^DEPS = 		$(OBJ:.o=.d)$/;"	m
-Debugging	README.md	/^### Debugging$/;"	S	section:Make Interface Project""Usage
-DisableNERDTreeForSpecificFiles	config/.vimrc	/^function! DisableNERDTreeForSpecificFiles()$/;"	f
-EOF	config/build.sh	/^    cat <<EOF > "$YCM_EXTRA_CONF"$/;"	h
 GREEN	config/Makefile	/^GREEN   = \\033[32m$/;"	m
-GREEN	src/make_prompt.c	/^#define GREEN /;"	d	file:
+GREEN	src/make_prompt.c	21;"	d	file:
 HELG	config/Makefile	/^HELG =      valgrind --tool=helgrind --history-level=full \\$/;"	m
 INCLUDES	config/Makefile	/^INCLUDES =  {{INCLUDES}} $/;"	m
-Installation	README.md	/^## Installation$/;"	s	chapter:Make Interface Project
 LDFLAGS	config/Makefile	/^LDFLAGS =	{{LIBDIRS}}$/;"	m
-License	README.md	/^## License$/;"	s	chapter:Make Interface Project
-MAX_FILES	src/interactive_select.c	/^#define MAX_FILES /;"	d	file:
-MAX_SLEEP_USEC	src/progress.c	/^#define MAX_SLEEP_USEC /;"	d	file:
-MIMode	config/.vimspector.json	/^        "MIMode": "gdb",$/;"	s	object:configurations.C Debugging.configuration
-MIN_SLEEP_USEC	src/progress.c	/^#define MIN_SLEEP_USEC /;"	d	file:
-Make Interface Project	README.md	/^# Make Interface Project$/;"	c
-Makefile Structure	README.md	/^## Makefile Structure$/;"	s	chapter:Make Interface Project
+MAX_FILES	src/interactive_select.c	19;"	d	file:
+MAX_SLEEP_USEC	src/progress.c	18;"	d	file:
+MIN_SLEEP_USEC	src/progress.c	19;"	d	file:
 NAME	config/Makefile	/^NAME = {{NAME}}$/;"	m
-NC	src/make_prompt.c	/^#define NC /;"	d	file:
-NERDTreeMinimalMenu	config/.vimrc	/^let NERDTreeMinimalMenu = 1        " Use minimal menu in NERDTree$/;"	v
-NERDTreeShowBookmarks	config/.vimrc	/^let NERDTreeShowBookmarks = 1      " Show bookmarks in NERDTree$/;"	v
-NERDTreeShowHidden	config/.vimrc	/^let NERDTreeShowHidden = 1         " Show hidden files in NERDTree$/;"	v
-NERDTreeShowLineNumbers	config/.vimrc	/^let NERDTreeShowLineNumbers = 0    " Hide line numbers in NERDTree$/;"	v
-NERDTreeWinSize	config/.vimrc	/^let NERDTreeWinSize = 31           " Set NERDTree panel width$/;"	v
+NC	src/make_prompt.c	23;"	d	file:
 OBJ	config/Makefile	/^OBJ = 		$(SRC:$(SRC_DIR)\/%.c=$(OBJ_DIR)\/%.o)$/;"	m
 OBJ_DIR	config/Makefile	/^OBJ_DIR = 	obj$/;"	m
-Other Utilities	README.md	/^### Other Utilities$/;"	S	section:Make Interface Project""Usage
-Project Overview	README.md	/^## Project Overview$/;"	s	chapter:Make Interface Project
 RED	config/Makefile	/^RED     = \\033[31m$/;"	m
-RED	src/make_prompt.c	/^#define RED /;"	d	file:
+RED	src/make_prompt.c	22;"	d	file:
 RESET	config/Makefile	/^RESET   = \\033[0m$/;"	m
-Running the Make Prompt	README.md	/^### Running the Make Prompt$/;"	S	section:Make Interface Project""Usage
 SANITIZE	config/Makefile	/^SANITIZE = 	-g3 -fPIC -fsanitize=thread$/;"	m
 SCRIPT_URL	config/Makefile	/^SCRIPT_URL = https:\/\/github.com\/jeportie\/make_interface.git$/;"	m
 SRC	config/Makefile	/^SRC =$/;"	m
 SRC_DIR	config/Makefile	/^SRC_DIR = 	src$/;"	m
-Table of Contents	README.md	/^## Table of Contents$/;"	s	chapter:Make Interface Project
-Targets	README.md	/^### Targets$/;"	S	section:Make Interface Project""Makefile Structure
-UML Diagram Management	README.md	/^### UML Diagram Management$/;"	S	section:Make Interface Project""Usage
-Usage	README.md	/^## Usage$/;"	s	chapter:Make Interface Project
 VALG	config/Makefile	/^VALG =		valgrind --leak-check=full --show-leak-kinds=all \\$/;"	m
 VERBOSE	config/Makefile	/^VERBOSE ?= @$/;"	m
 VERBOSE	config/Makefile	/^classic: VERBOSE =$/;"	m
 VFLAGS	config/Makefile	/^VFLAGS = 	-g3 -fPIC $/;"	m
-Variables	README.md	/^### Variables$/;"	S	section:Make Interface Project""Makefile Structure
 YELLOW	config/Makefile	/^YELLOW  = \\033[33m$/;"	m
-adapter	config/.vimspector.json	/^      "adapter": "vscode-cpptools",$/;"	s	object:configurations.C Debugging
-adapters	config/.vimspector.json	/^  "adapters": {$/;"	o
-all	config/Makefile	/^all: $(NAME)$/;"	t
-args	config/.vimspector.json	/^        "args": [],$/;"	a	object:configurations.C Debugging.configuration
-bak	config/Makefile	/^bak:$/;"	t
-build	config/Makefile	/^build:$/;"	t
-classic	config/Makefile	/^classic: $(NAME)$/;"	t
-classic	config/Makefile	/^classic: VERBOSE =$/;"	t
-clean	config/Makefile	/^clean:$/;"	t
-command	config/.vimspector.json	/^      "command": [$/;"	a	object:adapters.vscode-cpptools
-configuration	config/.vimspector.json	/^      "configuration": {$/;"	o	object:configurations.C Debugging
-configurations	config/.vimspector.json	/^  "configurations": {$/;"	o
 create_ycm_extra_conf	config/build.sh	/^create_ycm_extra_conf() {$/;"	f
-cwd	config/.vimspector.json	/^        "cwd": "${workspaceRoot}",$/;"	s	object:configurations.C Debugging.configuration
-debug	config/Makefile	/^debug:$/;"	t
-default	config/Makefile	/^default: CC = cc$/;"	t
-default	config/Makefile	/^default: CFLAGS -= $(SANITIZE)$/;"	t
-default	config/Makefile	/^default: CFLAGS -= $(VFLAGS)$/;"	t
-default	config/Makefile	/^default: re$/;"	t
-description	config/.vimspector.json	/^            "description": "Enable pretty-printing for gdb",$/;"	s	object:configurations.C Debugging.configuration.setupCommands.0
-display_menu	src/interactive_select.c	/^void	display_menu(WINDOW *menu_win, char *choices[], int n_choices, int hl)$/;"	f	typeref:typename:void
-download-script	config/Makefile	/^download-script:$/;"	t
-environment	config/.vimspector.json	/^        "environment": [],$/;"	a	object:configurations.C Debugging.configuration
-externalConsole	config/.vimspector.json	/^        "externalConsole": false,$/;"	b	object:configurations.C Debugging.configuration
-fclean	config/Makefile	/^fclean: clean$/;"	t
-ft_count_words	src/make_prompt.c	/^static size_t	ft_count_words(char *str, char c)$/;"	f	typeref:typename:size_t	file:
-ft_extract	src/make_prompt.c	/^static char	*ft_extract(const char **s, char c, char **tab, size_t i)$/;"	f	typeref:typename:char *	file:
-ft_free_memory	src/make_prompt.c	/^static void	ft_free_memory(char **tab, size_t i)$/;"	f	typeref:typename:void	file:
-ft_split	src/make_prompt.c	/^char	**ft_split(char const *s, char c)$/;"	f	typeref:typename:char **
-ft_strlcpy	src/make_prompt.c	/^size_t	ft_strlcpy(char *dst, const char *src, size_t size)$/;"	f	typeref:typename:size_t
-ft_substr_len	src/make_prompt.c	/^static size_t	ft_substr_len(char *str, char c)$/;"	f	typeref:typename:size_t	file:
-fullclean	config/Makefile	/^fullclean: fclean$/;"	t
-g:AutoPairsShortcutToggle	config/.vimrc	/^let g:AutoPairsShortcutToggle = '<C-P>'  " Auto-pairs toggle shortcut$/;"	v
-g:NERDTreeHijackNetrw	config/.vimrc	/^    let g:NERDTreeHijackNetrw = 0$/;"	v
-g:NERDTreeHijackNetrw	config/.vimrc	/^  let g:NERDTreeHijackNetrw = 1$/;"	v
-g:NERDTreeQuitOnOpen	config/.vimrc	/^    let g:NERDTreeQuitOnOpen = 1$/;"	v
-g:NERDTreeQuitOnOpen	config/.vimrc	/^  let g:NERDTreeQuitOnOpen = 0$/;"	v
-g:mail42	config/.vimrc	/^let g:mail42 = 'jeportie@student.42.fr'  " 42 email$/;"	v
-g:plantuml_executable_script	config/.vimrc	/^let g:plantuml_executable_script = "~\/bin\/plantuml.sh"$/;"	v
-g:tagbar_autofocus	config/.vimrc	/^let g:tagbar_autofocus = 1         " Auto-focus tagbar$/;"	v
-g:tagbar_autoshowtag	config/.vimrc	/^let g:tagbar_autoshowtag = 1       " Highlight active tag$/;"	v
-g:tagbar_position	config/.vimrc	/^let g:tagbar_position = 'botright vertical'$/;"	v
-g:user42	config/.vimrc	/^let g:user42 = 'jeportie'          " 42 username$/;"	v
-g:user_emmet_leader_key	config/.vimrc	/^let g:user_emmet_leader_key=','     " Emmet leader key$/;"	v
+display_menu	src/interactive_select.c	/^void	display_menu(WINDOW *menu_win, char *choices[], int n_choices, int hl)$/;"	f
+ft_count_words	src/make_prompt.c	/^static size_t	ft_count_words(char *str, char c)$/;"	f	file:
+ft_extract	src/make_prompt.c	/^static char	*ft_extract(const char **s, char c, char **tab, size_t i)$/;"	f	file:
+ft_free_memory	src/make_prompt.c	/^static void	ft_free_memory(char **tab, size_t i)$/;"	f	file:
+ft_split	src/make_prompt.c	/^char	**ft_split(char const *s, char c)$/;"	f
+ft_strlcpy	src/make_prompt.c	/^size_t	ft_strlcpy(char *dst, const char *src, size_t size)$/;"	f
+ft_substr_len	src/make_prompt.c	/^static size_t	ft_substr_len(char *str, char c)$/;"	f	file:
 generate_src_list	exec/update_makefile.sh	/^generate_src_list() {$/;"	f
-get_uml_files	src/interactive_select.c	/^void	get_uml_files(char *directory, char *file_list[], int *count)$/;"	f	typeref:typename:void
-helgrind	config/Makefile	/^helgrind:$/;"	t
-help	config/Makefile	/^help:$/;"	t
-ignoreFailures	config/.vimspector.json	/^            "ignoreFailures": true$/;"	b	object:configurations.C Debugging.configuration.setupCommands.0
-main	src/interactive_select.c	/^int	main(void)$/;"	f	typeref:typename:int
-main	src/make_prompt.c	/^int	main(void)$/;"	f	typeref:typename:int
-main	src/progress.c	/^int	main(int argc, char **argv)$/;"	f	typeref:typename:int
-miDebuggerPath	config/.vimspector.json	/^        "miDebuggerPath": "\/usr\/bin\/gdb",$/;"	s	object:configurations.C Debugging.configuration
-name	config/.vimspector.json	/^      "name": "cpptools"$/;"	s	object:adapters.vscode-cpptools
-norm	config/Makefile	/^norm:$/;"	t
-preLaunchTask	config/.vimspector.json	/^        "preLaunchTask": "build"$/;"	s	object:configurations.C Debugging.configuration
-print_progress	src/progress.c	/^void	print_progress(int step, int total)$/;"	f	typeref:typename:void
-program	config/.vimspector.json	/^        "program": "${workspaceRoot}\/a.out",$/;"	s	object:configurations.C Debugging.configuration
-progressive_sleep	src/progress.c	/^void	progressive_sleep(int step, int total)$/;"	f	typeref:typename:void
-re	config/Makefile	/^re: fclean all$/;"	t
-remove_newline	src/make_prompt.c	/^void	remove_newline(char *str)$/;"	f	typeref:typename:void
-request	config/.vimspector.json	/^        "request": "launch",$/;"	s	object:configurations.C Debugging.configuration
-run	config/Makefile	/^run:$/;"	t
-run-prompt	config/Makefile	/^run-prompt: download-script$/;"	t
-run_make_command	src/make_prompt.c	/^void run_make_command(char *target, char *args)$/;"	f	typeref:typename:void
-san	config/Makefile	/^san: CC = clang$/;"	t
-san	config/Makefile	/^san: CFLAGS += $(SANITIZE)$/;"	t
-san	config/Makefile	/^san: CFLAGS -= $(VFLAGS)$/;"	t
-san	config/Makefile	/^san: re$/;"	t
-setupCommands	config/.vimspector.json	/^        "setupCommands": [$/;"	a	object:configurations.C Debugging.configuration
-stopAtEntry	config/.vimspector.json	/^        "stopAtEntry": true,$/;"	b	object:configurations.C Debugging.configuration
-tclean	config/Makefile	/^tclean:$/;"	t
-text	config/.vimspector.json	/^            "text": "-enable-pretty-printing",$/;"	s	object:configurations.C Debugging.configuration.setupCommands.0
-todo	config/Makefile	/^todo:$/;"	t
-uml	config/Makefile	/^uml:$/;"	t
-update	config/Makefile	/^update:$/;"	t
+get_uml_files	src/interactive_select.c	/^void	get_uml_files(char *directory, char *file_list[], int *count)$/;"	f
+main	src/interactive_select.c	/^int	main(void)$/;"	f
+main	src/make_prompt.c	/^int	main(void)$/;"	f
+main	src/progress.c	/^int	main(int argc, char **argv)$/;"	f
+print_progress	src/progress.c	/^void	print_progress(int step, int total)$/;"	f
+progressive_sleep	src/progress.c	/^void	progressive_sleep(int step, int total)$/;"	f
+remove_newline	src/make_prompt.c	/^void	remove_newline(char *str)$/;"	f
+run_make_command	src/make_prompt.c	/^void run_make_command(char *target, char *args)$/;"	f
 update_makefile	config/build.sh	/^update_makefile() {$/;"	f
-val	config/Makefile	/^val: CC = cc$/;"	t
-val	config/Makefile	/^val: CFLAGS += $(VFLAGS) $/;"	t
-val	config/Makefile	/^val: CFLAGS -= $(SANITIZE)$/;"	t
-val	config/Makefile	/^val: re$/;"	t
-valgrind	config/Makefile	/^valgrind:$/;"	t
-vscode-cpptools	config/.vimspector.json	/^    "vscode-cpptools": {$/;"	o	object:adapters
