@@ -5,27 +5,32 @@
 #                                                     +:+ +:+         +:+      #
 #    By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-<<<<<<< HEAD
-#    Created: 2024/09/30 17:04:56 by jeportie          #+#    #+#              #
-#    Updated: 2024/09/30 17:05:03 by jeportie         ###   ########.fr        #
-=======
-#    Created: 2024/09/30 09:19:51 by jeportie          #+#    #+#              #
-#    Updated: 2024/09/30 09:20:13 by jeportie         ###   ########.fr        #
->>>>>>> e8a638499a29bb548b47d17490cfe8aed79e7dee
+#    Created: 2024/10/02 15:52:29 by jeportie          #+#    #+#              #
+#    Updated: 2024/10/02 15:52:32 by jeportie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #!/bin/bash
 
-# Find the test_src directory
-test_src_dir=$(find . -type d -name "test_src")
+# Debug: Print current working directory
+echo "Current working directory: $(pwd)"
 
-# Check if the test_src directory exists
-if [ -d "$test_src_dir" ]; then
+# First, check if ./test_src exists in the current directory
+if [ -d "./test_src" ]; then
+    test_src_dir="./test_src"
+    echo "Found test_src directory at: $test_src_dir (in current directory)"
+else
+    # If not, find the test_src directory but exclude unwanted paths like lib/libft
+    test_src_dir=$(find "$(pwd)" -type d -name "test_src" ! -path "*/lib/libft/*" -print -quit)
+    echo "Found directory: '$test_src_dir'"
+fi
+
+# Check if the test_src directory exists and is not empty
+if [ -n "$test_src_dir" ] && [ -d "$test_src_dir" ]; then
     echo "Found test_src directory at: $test_src_dir"
     
     # Navigate to the test_src directory
-    cd "$test_src_dir"
+    cd "$test_src_dir" || exit
 
     # Remove the specified files and directories
     echo "Removing specified files and directories..."
