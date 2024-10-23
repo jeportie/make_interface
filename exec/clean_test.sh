@@ -6,7 +6,7 @@
 #    By: jeportie <jeportie@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/02 15:53:14 by jeportie          #+#    #+#              #
-#    Updated: 2024/10/02 15:53:17 by jeportie         ###   ########.fr        #
+#    Updated: 2024/10/23 16:09:25 by jeportie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,10 +34,7 @@ if [ -n "$test_src_dir" ] && [ -d "$test_src_dir" ]; then
 
     # Remove the specified files and directories
     echo "Removing specified files and directories..."
-    rm -rf CMakeCache.txt Makefile cmake_install.cmake CMakeFiles CTestTestfile.cmake Testing
-
-    # Remove all compiled executables (files with no extension)
-    find . -type f -executable -exec rm -f {} +
+    rm -rf build/
 
     echo "Cleanup complete."
 else
